@@ -1,0 +1,26 @@
+.hero {
+  background-image: url("/Photo by Tim Mossholder.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.title {
+  font-size: 50px;
+  color: white;
+  margin: 2%;
+}

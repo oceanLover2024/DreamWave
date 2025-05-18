@@ -1,0 +1,38 @@
+.background {
+  background-image: url("/Photo by Tim Mossholder.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.section {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 100px;
+  box-sizing: border-box;
+  border: 5px solid rgb(49, 247, 5);
+}
+.wrapper {
+  max-width: 1200px;
+
+  padding-bottom: 100px; /*暫時*/
+  background-color: white; /*暫時*/
+  border: 5px solid rgb(243, 12, 12);
+  margin: 0 auto;
+}
+.layout {
+  width: 1200px;
+  margin: 0 auto;
+  border: 1px rgb(255, 0, 225) solid;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 70px;
+}
+.todo_layout {
+  width: 500px;
+}

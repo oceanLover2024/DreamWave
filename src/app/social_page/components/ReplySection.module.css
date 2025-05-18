@@ -1,0 +1,8 @@
+.replies_outer {
+  border: 1px red solid;
+}
+.replies_content {
+  max-height: 80px;
+  overflow-y: auto;
+  border: 1px rgb(19, 84, 36) solid;
+}
