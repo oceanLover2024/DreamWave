@@ -22,10 +22,13 @@ export default function habitCalendar() {
       const snapshot = await getDocs(
         collection(db, "users", user.uid, "habits")
       );
+      console.log(snapshot);
       const result: TodoRecord[] = [];
+
       snapshot.forEach((doc) => {
         const data = doc.data();
         const { todos, date } = data;
+        console.log(data);
         todos.forEach((todo: FirebaseTodo) => result.push({ ...todo, date }));
       });
       setRecords(result);

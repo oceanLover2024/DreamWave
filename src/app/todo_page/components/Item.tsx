@@ -1,5 +1,5 @@
 "use client";
-import { TodoItem } from "../type/todoItem";
+import { TodoItem } from "../../type/todoItem";
 type ItemProps = TodoItem & {
   handleDelete: () => void;
   handleIsCompleted: () => void;

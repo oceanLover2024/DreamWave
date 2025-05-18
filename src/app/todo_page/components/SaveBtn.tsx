@@ -1,5 +1,5 @@
 "use client";
-import { TodoItem } from "../type/todoItem";
+import { TodoItem } from "../../type/todoItem";
 import { useAuth } from "../../../context/AuthContext";
 import { db } from "../../../lib/firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
@@ -19,6 +19,7 @@ const SaveBtn = ({ onClear, todos }: SaveBtnProps) => {
         todos: todos,
         date: today,
       });
+
       //shared social wall
       const shareToWallTodos = todos.filter((item) => item.isShared);
       for (const item of shareToWallTodos) {

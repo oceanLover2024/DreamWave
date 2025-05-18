@@ -1,6 +1,6 @@
 import styles from "./List.module.css";
 import Item from "./Item";
-import { TodoItem } from "../type/todoItem";
+import { TodoItem } from "../../type/todoItem";
 type ListProps = {
   todo: TodoItem[];
   handleDelete: (index: number) => void;

@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./Edit.module.css";
-import { TodoItem } from "../type/todoItem";
+import { TodoItem } from "../../type/todoItem";
 type EditProps = { setTodo: Dispatch<SetStateAction<TodoItem[]>> };
 const Edit: React.FC<EditProps> = ({ setTodo }) => {
   const [title, setTitle] = useState<string>("");
