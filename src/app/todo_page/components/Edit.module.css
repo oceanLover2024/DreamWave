@@ -1,4 +1,66 @@
 .outer {
-  width: 500px;
-  border: 1px solid green;
+  width: 100%;
+  background-color: rgba(245, 247, 248, 0.381);
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.create_here {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.form_layout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.select_wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.select_wrapper select,
+.input_detail,
+.other_category {
+  font-family: "Courier New", Courier, monospace;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #5dadd5;
+  border-radius: 6px;
+}
+.select_wrapper select:focus,
+.input_detail:focus,
+.other_category:focus {
+  outline-color: #5197ba;
+  /* box-shadow: 3px 3px 5px rgb(61, 213, 239);*/
+}
+.select_wrapper select {
+  cursor: pointer;
+}
+.input_detail {
+  flex: 1;
+}
+.other_category {
+  width: 100px;
+}
+.create_btn {
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #5197ba;
+  border: none;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: rgb(240, 248, 255);
+  transition: background-color 0.2s;
+}
+.create_btn:hover {
+  background-color: #325f75;
+  color: white;
+  transform: scale(0.9);
 }

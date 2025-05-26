@@ -1,0 +1,27 @@
+.calendar_wrapper {
+  width: 50%;
+  /* border: 1px solid black;*/
+  box-sizing: border-box;
+}
+.select {
+  font-family: "Courier New", Courier, monospace;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  width: 200px;
+  display: block;
+  margin: 20px auto;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.select:hover {
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 2px rgba(194, 109, 127, 0.328);
+}
+.select:focus {
+  outline: none;
+}
+.calendar {
+  margin: 0 auto;
+}

@@ -1,4 +1,12 @@
 .outer {
-  width: 500px;
-  border: 1px solid rgb(15, 45, 112);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  align-items: stretch;
+}
+.h2 {
+  text-align: center;
 }

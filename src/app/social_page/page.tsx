@@ -4,9 +4,11 @@ import { CardItem } from "./components/type/card";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 import ProtectRoute from "../components/ProtectRoute";
-
+import styles from "./page.module.css";
 export default function SocialPage() {
+  const { user } = useAuth();
   const [fetchedPosts, setFetchedPosts] = useState<CardItem[]>([]);
   useEffect(() => {
     const toFetchPostsFromDB = async () => {
@@ -17,13 +19,14 @@ export default function SocialPage() {
         return {
           id: doc.id,
           name: data.name,
+          authorId: data.authorId,
           title: data.title ?? "",
           detail: data.detail ?? "",
           comment: data.comment ?? "",
           createAt: data.createAt ?? new Date().toISOString(),
           likes: data.likes ?? 0,
-          replies: Array.isArray(data.replies) ? data.replies : [],
           likedBy: Array.isArray(data.likedBy) ? data.likedBy : [],
+          repliesCount: data.repliesCount ?? 0,
         };
       });
 
@@ -35,7 +38,12 @@ export default function SocialPage() {
 
   return (
     <ProtectRoute>
-      <SocialWall postFromDB={fetchedPosts} />
+      <div className={styles.background} />
+      <section className={styles.section}>
+        <div className={styles.wrapper}>
+          <SocialWall postFromDB={fetchedPosts} />
+        </div>
+      </section>
     </ProtectRoute>
   );
 }

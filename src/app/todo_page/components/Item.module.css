@@ -1,0 +1,110 @@
+.card {
+  width: 100%;
+  min-width: 100%;
+  background-color: rgba(245, 247, 248, 0.566);
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.first_line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.share_label {
+  display: flex;
+  align-items: center;
+}
+.detail {
+  flex-grow: 1;
+  font-size: 16px;
+  word-break: break-word;
+}
+.title {
+  font-size: 16px;
+}
+.do_checkbox {
+  /*要再做svg*/
+  width: 30px;
+  height: 30px;
+}
+.share_checkbox,
+.do_checkbox {
+  cursor: pointer;
+}
+.icon_wrapper {
+  display: flex;
+  gap: 1rem;
+}
+.share_icon,
+.save_icon,
+.delete_icon,
+.edit_icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+.share_icon:hover,
+.save_icon:hover,
+.delete_icon:hover,
+.edit_icon:hover {
+  color: rgb(63, 64, 64);
+}
+.share_now {
+  background-color: rgb(234, 241, 248);
+  width: 100px;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform ease 0.2;
+  display: flex;
+  justify-self: flex-end;
+}
+.already_shared {
+  background-color: #c2c3c3;
+  width: 150px;
+  display: flex;
+  justify-self: flex-end;
+  padding: 0.5rem;
+  border-radius: 9999px;
+}
+.share_now:hover {
+  transform: scale(0.95);
+}
+.comment_text {
+  width: 100%;
+  min-height: 60px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.comment_text:focus {
+  outline-color: #5197ba;
+}
+.comment {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-self: center;
+  line-height: 1.5;
+  color: rgb(64, 63, 63);
+  word-break: break-word;
+  white-space: normal;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .first_line {
+    justify-content: flex-start;
+  }
+  .icon_wrapper {
+    justify-content: space-around;
+    flex-basis: 100%;
+  }
+}

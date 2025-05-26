@@ -1,0 +1,34 @@
+.Moment_wrapper {
+  /* border: 3px solid green;*/
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+.Moment_layout {
+  padding: 1rem;
+}
+.Moment_title,
+.details,
+.comment {
+  margin-bottom: 1rem;
+}
+.comment {
+  line-height: 1.5;
+}
+.todayBtn {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+
+.todayBtnImg {
+  width: 100px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.todayBtnImg:hover {
+  transform: scale(0.95);
+}

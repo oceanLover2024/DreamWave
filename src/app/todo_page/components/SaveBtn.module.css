@@ -1,0 +1,19 @@
+.save_all_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 40px;
+  background-color: rgba(246, 244, 244, 0.631);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 9999px;
+  transition: transform 0.2s ease;
+  justify-self: center;
+  margin: 20px;
+}
+.save_all_btn:hover {
+  transform: scale(0.95);
+  background-color: #325f75;
+  color: white;
+}

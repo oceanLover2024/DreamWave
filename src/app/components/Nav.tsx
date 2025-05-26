@@ -6,7 +6,7 @@ import ToggleMenu from "./ToggleMenu";
 import Image from "next/image";
 export const Nav = () => {
   const { user, isLoading, logOut } = useAuth();
-  if (isLoading) return <div>載入中...</div>;
+  /* if (isLoading) return <div>載入中...</div>;*/
   return (
     <nav className={styles.nav}>
       <div className={styles.layout}>
@@ -15,6 +15,7 @@ export const Nav = () => {
             <Image src="/title.png" alt="Dream Wave" width={100} height={50} />
           </Link>
         </div>
+        <div className={styles.space} />
         <ToggleMenu />
       </div>
     </nav>

@@ -1,8 +1,90 @@
 .replies_outer {
-  border: 1px red solid;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .replies_content {
-  max-height: 80px;
+  max-height: 150px;
   overflow-y: auto;
-  border: 1px rgb(19, 84, 36) solid;
+  border-radius: 10px;
+  background-color: rgba(147, 146, 146, 0.172);
+  box-sizing: border-box;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: default;
+}
+.replies_content::-webkit-scrollbar {
+  display: none;
+}
+.individual_reply {
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.462);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.textarea {
+  padding: 0.5rem;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.314);
+  padding: 0.5rem;
+  resize: vertical;
+}
+.textarea:hover {
+  outline: 2px solid rgb(142, 200, 218);
+}
+
+.submit {
+  width: 70px;
+  height: 30px;
+  border-radius: 9999px;
+  text-align: center;
+  margin: auto 0;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.314);
+  font-family: "Courier New", Courier, monospace;
+}
+.submit:hover {
+  transform: scale(0.95);
+  background-color: aliceblue;
+}
+.icon_btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.save_btn:hover,
+.delete_btn:hover,
+.edit_btn:hover {
+  transform: scale(0.95);
+  cursor: pointer;
+  color: rgb(59, 58, 58);
+}
+.name_time_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dot {
+  color: rgb(79, 79, 79);
+}
+.time {
+  color: rgb(79, 79, 79);
+  font-size: 10px;
+  flex: 1;
 }

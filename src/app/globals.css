@@ -3,12 +3,13 @@ body {
   margin: 0;
 }
 .react-calendar__tile.calendar_marked {
-  border: 2px solid #084c7a;
+  border: 2px solid #5184a6;
   border-radius: 50%;
   background-color: #d0f0ff;
 }
 .react-calendar {
   border-radius: 12px;
-  border: 3px solid #8f9192 !important;
+
   padding: 10px;
 }
+@import "./styles/react-calendar.css";

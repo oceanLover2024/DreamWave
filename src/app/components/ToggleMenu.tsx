@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { usePathname } from "next/navigation";
 
-export default function ToggleMenu() {
+export default function ToggleMenu<Props>() {
   const { user, isLoading, logOut } = useAuth();
-  if (isLoading) return <div>載入中...</div>;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathName = usePathname();
   const toggle = () => {
     setIsOpen(!isOpen);
   };
   useEffect(() => setIsOpen(false), [pathName]);
+  if (isLoading) return <div>載入中...</div>;
   return (
     <>
       <div className={styles.wrapper}>

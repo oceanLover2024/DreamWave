@@ -2,6 +2,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./Edit.module.css";
 import { TodoItem } from "../../type/todoItem";
+import { v4 as uuidv4 } from "uuid";
 type EditProps = { setTodo: Dispatch<SetStateAction<TodoItem[]>> };
 const Edit: React.FC<EditProps> = ({ setTodo }) => {
   const [title, setTitle] = useState<string>("");
@@ -13,12 +14,14 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
       setTodo((pre: TodoItem[]) => [
         ...pre,
         {
+          id: uuidv4(),
           title: finalTitle,
           detail,
           isCompleted: false,
           isShared: false,
           comment: "",
           isEditingComment: false,
+          isShareNow: false,
         },
       ]);
       setTitle("");
@@ -32,46 +35,54 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
   return (
     <>
       <div className={styles.outer}>
-        <h2>Create Here</h2>
-        <div>
-          <select
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-            value={title}
-          >
-            <option value="">請選擇類別</option>
-            <option value="📓閱讀">📓閱讀</option>
-            <option value="👩‍💻寫程式">👩‍💻寫程式</option>
-            <option value="🏃‍♂️‍➡️跑步">🏃‍♂️‍➡️跑步</option>
-            <option value="🏄🏻‍♀️衝浪">🏄🏻‍♀️衝浪</option>
-            <option value="🏊🏼游泳">🏊🏼游泳</option>
-            <option value="🏋🏻‍♂️重訓">🏋🏻‍♂️重訓</option>
-            <option value="🚴🏻‍♂️單車">🚴🏻‍♂️單車</option>
-            <option value="🧘🏻‍♀️冥想">🧘🏻‍♀️冥想</option>
-            <option value="🔸其他">🔸其他</option>
-          </select>
-        </div>
-        {title === "🔸其他" && (
+        <div className={styles.create_here}>Create Here</div>
+        <div className={styles.form_layout}>
+          <div className={styles.select_wrapper}>
+            <select
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+              value={title}
+              required
+            >
+              <option value=""> Category</option>
+              <option value="📓Reading">📓Reading</option>
+              <option value="👩‍💻Programming">👩‍💻Programming</option>
+              <option value="🏃‍♂️‍➡️Running">🏃‍♂️‍➡️Running</option>
+              <option value="🏄🏻‍♀️Surfing">🏄🏻‍♀️Surfing</option>
+              <option value="🏊🏼Swimming">🏊🏼Swimming</option>
+              <option value="🏋🏻‍♂️Work out">🏋🏻‍♂️Work out</option>
+              <option value="🚴🏻‍♂️Cycling">🚴🏻‍♂️Cycling</option>
+              <option value="🧘🏻‍♀️Yoga">🧘🏻‍♀️yoga</option>
+              <option value="🔸Others">🔸Others</option>
+            </select>
+          </div>
+
+          {title === "🔸Others" && (
+            <input
+              type="text"
+              placeholder="Category"
+              className={styles.other_category}
+              value={userTitle}
+              required
+              onChange={(e) => setUserTitle(e.target.value)}
+            />
+          )}
+
           <input
             type="text"
-            placeholder="請輸入類別"
-            value={userTitle}
-            onChange={(e) => setUserTitle(e.target.value)}
-          />
-        )}
-        <div>
-          <input
-            type="text"
-            placeholder="可輸入細節"
+            placeholder="Task details"
+            className={styles.input_detail}
             value={detail}
             onChange={(e) => {
               setDetail(e.target.value);
             }}
           />
-        </div>
 
-        <button onClick={handleCreate}>CREATE</button>
+          <button onClick={handleCreate} className={styles.create_btn}>
+            +
+          </button>
+        </div>
       </div>
     </>
   );

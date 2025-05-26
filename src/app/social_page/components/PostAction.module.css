@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  align-items: baseline;
+}
+.like,
+.reply_btn {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reply_btn {
+  margin-left: 0.5rem;
+}
+.like:hover,
+.reply_btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
