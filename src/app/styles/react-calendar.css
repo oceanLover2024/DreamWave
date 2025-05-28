@@ -134,3 +134,8 @@
 .react-calendar__month-view__weekdays__weekday abbr {
   text-decoration: none;
 }
+@media (max-width: 600px) {
+  .react-calendar {
+    width: 300px;
+  }
+}

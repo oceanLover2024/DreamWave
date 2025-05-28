@@ -8,7 +8,7 @@
   display: flex;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   align-items: center;
   justify-content: center;
   width: 100px;
@@ -33,7 +33,7 @@
 .box {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   width: 250px;
   height: 200px;
   background-color: rgba(233, 230, 230, 0.671);

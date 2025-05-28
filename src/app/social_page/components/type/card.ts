@@ -1,11 +1,12 @@
 export interface CardItem {
   id: string;
   name: string;
-  authorId?: string;
+  authorId: string;
   title: string;
   detail: string;
   comment: string;
   createAt: string;
+  updateAt: string;
   likes: number;
   replies?: Reply[];
   likedBy: string[];

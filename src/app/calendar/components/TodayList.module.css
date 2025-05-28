@@ -1,5 +1,4 @@
 .todayTodo_wrapper {
-  /* margin-top: 72px;*/
   /*border: 1px solid blue;*/
   box-sizing: border-box;
   width: 50%;
@@ -11,10 +10,74 @@
   padding: 1rem;
 }
 .today_todo {
-  width: 500px;
-  /*  border: 1px solid rebeccapurple;*/
+  width: 350px;
+  border-bottom: 1px solid rgb(248, 247, 249);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-size: 20px;
+}
+.today_achievements {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 20px;
+}
+.icon_text_wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+}
+.icon_wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.icon {
+  cursor: pointer;
+  color: rgb(62, 62, 62);
+}
+.icon:hover {
+  color: rgb(92, 92, 93);
+  transform: scale(0.95);
+}
+.edit_icon {
+  font-size: 24px;
+}
+.delete_icon {
+  font-size: 22px;
+}
+.save_icon {
+  font-size: 22px;
+  margin-left: 16px;
+}
+.input,
+.textarea {
+  width: 90%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff9f;
+  outline: none;
+}
+.textarea {
+  resize: vertical;
+}
+.input:hover,
+.textarea:hover {
+  box-shadow: 0 0 0 2px rgba(194, 109, 127, 0.328);
+}
+
+@media (max-width: 1200px) {
+  .todayTodo_wrapper {
+    width: auto;
+  }
+  .today_todo {
+    width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  .icon_wrapper {
+    justify-content: space-evenly;
+  }
 }

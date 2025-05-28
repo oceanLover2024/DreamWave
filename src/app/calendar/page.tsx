@@ -11,6 +11,7 @@ import ControlCalendar from "./components/ControlCalendar";
 import { TodoRecord } from "../type/todoItem";
 import TodayList from "./components/TodayList";
 import Moment from "./components/Moment";
+import { usePhotographer } from "@/context/PhotographerContext";
 export default function habitCalendar() {
   const { user } = useAuth();
   const [selectedTitle, setSelectedTitle] = useState<string>("");
@@ -19,6 +20,7 @@ export default function habitCalendar() {
   const [todayTodo, setTodayTodo] = useState<TodoRecord[]>([]);
   const [showTodayBtn, setShowTodayBtn] = useState<boolean>(true);
   const todayStr = format(new Date(), "yyyy-MM-dd");
+  const { setPhotographerName } = usePhotographer();
   useEffect(() => {
     const fetchRecords = async () => {
       if (!user) return;
@@ -56,6 +58,7 @@ export default function habitCalendar() {
     };
     fetchTodayRecord();
   }, [user, todayStr]);
+  useEffect(() => setPhotographerName("Mo-Eid"), []);
   const isCompletedDate = useMemo(
     () =>
       new Set(
@@ -105,7 +108,8 @@ export default function habitCalendar() {
             <TodayList
               selectedTitle={selectedTitle}
               todayTodo={todayTodo}
-              selectedDate={selectedDate}
+              todayStr={todayStr}
+              setTodayTodo={setTodayTodo}
             />
             <Moment
               filterRecords={filterRecords}

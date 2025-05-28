@@ -13,7 +13,7 @@ export default function ToggleMenu<Props>() {
     setIsOpen(!isOpen);
   };
   useEffect(() => setIsOpen(false), [pathName]);
-  if (isLoading) return <div>載入中...</div>;
+  if (isLoading) return;
   return (
     <>
       <div className={styles.wrapper}>

@@ -41,7 +41,7 @@ const SaveBtn = ({ onClear, todos }: SaveBtnProps) => {
 
         await setDoc(postRef, postData);
       }
-      alert("已存檔!");
+      alert("Successfully submitted!");
 
       await deleteDoc(doc(db, "users", user.uid, "drafts", today));
       localStorage.removeItem("local_todos");

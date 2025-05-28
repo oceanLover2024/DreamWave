@@ -17,7 +17,7 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     setUsernameError("");
-    if (!username) setUsernameError("請輸入暱稱");
+    if (!username) setUsernameError("Please enter a display name");
     try {
       const userData = await createUserWithEmailAndPassword(
         auth,
@@ -27,32 +27,32 @@ export default function Signup() {
       setUsername(username);
       await updateProfile(userData.user, { displayName: username });
       await saveUserDataToDB(userData.user.uid, username, email);
-      alert("註冊成功");
+      alert("Sign-up successful!");
       router.push("../auth/sign_in");
     } catch (e) {
       if (e instanceof FirebaseError) {
         switch (e.code) {
           case "auth/invalid-email":
-            setError("未填電子郵件，或電子郵件格式錯誤，請重新輸入。");
+            setError("Invalid or missing email. Please try again.");
             break;
           case "auth/missing-password":
-            setError("請輸入密碼");
+            setError("Please enter a password.");
             break;
           case "auth/weak-password":
-            setError("密碼需至少六個字元");
+            setError("Password must be at least 6 characters.");
             break;
           case "auth/email-already-in-use":
-            setError("此電子郵件已被註冊，請重新輸入。");
+            setError("This email is already registered.");
             break;
           default:
-            setError("登入失敗:" + e.message);
+            setError("Login failed:" + e.message);
         }
       } else if (e instanceof Error) {
         console.log("程式錯誤:", e.message);
-        setError("登入失敗，請重試");
+        setError("Login failed, Please try again.");
       } else {
         console.log("未知錯誤:");
-        setError("發生錯誤，請重試");
+        setError("An error occurred. Please try again.");
       }
     }
   };

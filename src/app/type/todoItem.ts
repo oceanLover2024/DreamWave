@@ -4,7 +4,7 @@ export interface TodoItem {
   detail: string;
   isCompleted: boolean;
   isShared: boolean;
-  comment?: string;
+  comment: string;
   isEditingComment?: boolean;
   isShareNow?: boolean;
 }

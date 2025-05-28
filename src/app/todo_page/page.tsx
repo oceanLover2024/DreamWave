@@ -10,10 +10,12 @@ import { db } from "../../lib/firebase";
 import { useAuth } from "../../context/AuthContext";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { format } from "date-fns";
+import { usePhotographer } from "@/context/PhotographerContext";
 const DayHabit = () => {
   const [todos, setTodo] = useState<TodoItem[]>([]);
   const today: string = format(new Date(), "yyyy-MM-dd");
   const { user } = useAuth();
+  const { setPhotographerName } = usePhotographer();
   useEffect(() => {
     const loadTodos = async () => {
       if (!user) return;
@@ -42,6 +44,7 @@ const DayHabit = () => {
     };
     saveDraft();
   }, [todos, user]);
+  useEffect(() => setPhotographerName("Siao"), []);
 
   function handleDelete(id: string) {
     setTodo((prev) => prev.filter((item) => item.id !== id));

@@ -1,6 +1,10 @@
+"use client";
+import { useEffect } from "react";
 import styles from "./page.module.css";
-
+import { usePhotographer } from "@/context/PhotographerContext";
 export default function Home() {
+  const { setPhotographerName } = usePhotographer();
+  useEffect(() => setPhotographerName("Tim Mossholder"), []);
   return (
     <main>
       <section className={styles.hero}>

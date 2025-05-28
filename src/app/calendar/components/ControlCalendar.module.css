@@ -1,7 +1,8 @@
 .calendar_wrapper {
   width: 50%;
-  /* border: 1px solid black;*/
+  /*border: 1px solid black;*/
   box-sizing: border-box;
+  min-width: 350px;
 }
 .select {
   font-family: "Courier New", Courier, monospace;
@@ -24,4 +25,10 @@
 }
 .calendar {
   margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .calendar_wrapper {
+    width: 90%;
+    min-width: 300px;
+  }
 }

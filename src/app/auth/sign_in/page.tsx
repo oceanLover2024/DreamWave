@@ -22,22 +22,22 @@ export default function SignIn() {
         console.log("Firebase 錯誤代碼：", e.code);
         switch (e.code) {
           case "auth/invalid-email":
-            setError("未填電子郵件，或電子郵件格式錯誤，請重新輸入。");
+            setError("Invalid or missing email. Please try again.");
             break;
           case "auth/missing-password":
-            setError("請輸入密碼");
+            setError("Please enter a password.");
             break;
 
           default:
-            setError("登入失敗，請重新輸入。");
+            setError("Login failed, Please try again.");
             console.log("firebase錯誤:", e.message);
         }
       } else if (e instanceof Error) {
         console.log("程式錯誤:", e.message);
-        setError("登入失敗，請重試");
+        setError("Login failed, Please try again.");
       } else {
         console.log("未知錯誤:");
-        setError("發生錯誤，請重試");
+        setError("An error occurred, Please try again.");
       }
     }
   };

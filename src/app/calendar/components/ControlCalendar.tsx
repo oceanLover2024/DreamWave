@@ -1,10 +1,8 @@
 import styles from "./ControlCalendar.module.css";
 import Calendar from "react-calendar";
-import { TodoRecord } from "../../type/todoItem";
 import { format } from "date-fns";
 type ControlCalendarProps = {
   selectedTitle: string;
-
   setSelectedTitle: (title: string) => void;
   setSelectedDate: (date: string) => void;
   titleCategories: string[];
@@ -15,13 +13,11 @@ type ControlCalendarProps = {
 };
 const ControlCalendar = ({
   selectedTitle,
-
   setSelectedTitle,
   setSelectedDate,
   titleCategories,
   isCompletedDate,
   handleClickDay,
-  showTodayBtn,
   setShowTodayBtn,
 }: ControlCalendarProps) => {
   return (

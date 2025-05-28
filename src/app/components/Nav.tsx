@@ -12,7 +12,13 @@ export const Nav = () => {
       <div className={styles.layout}>
         <div className={styles.dream_wave}>
           <Link href="/">
-            <Image src="/title.png" alt="Dream Wave" width={100} height={50} />
+            <Image
+              src="/title.png"
+              alt="Dream Wave"
+              width={100}
+              height={50}
+              priority
+            />
           </Link>
         </div>
         <div className={styles.space} />

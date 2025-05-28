@@ -10,19 +10,12 @@ import { db } from "@/lib/firebase";
 type PostActionProps = {
   post: CardItem;
   onLike: (id: string) => void;
-  /*  onReply: (id: string, message: string) => void;
-  updateRepliesfromLocal: (postId: string, updatedReplies: Reply[]) => void;*/
 };
-const PostAction: React.FC<PostActionProps> = ({
-  post,
-  onLike,
-  /* onReply,
-  updateRepliesfromLocal,*/
-}) => {
+const PostAction: React.FC<PostActionProps> = ({ post, onLike }) => {
   const { user } = useAuth();
   const [showReplies, setShowReplies] = useState<boolean>(false);
-  const hasLiked = user ? post.likedBy.includes(user.uid) : false;
   const [repliesCount, setRepliesCount] = useState<number>(post.repliesCount);
+  const hasLiked = user ? post.likedBy.includes(user.uid) : false;
   const toggleShowReply = () => setShowReplies((prev) => !prev);
   const handleCLickLike = () => {
     onLike(post.id);
@@ -45,17 +38,9 @@ const PostAction: React.FC<PostActionProps> = ({
           💬
         </button>
         <div>{repliesCount}</div>
-        {/* ... <div>{post.replies.length}</div>*/}
       </div>
 
-      {showReplies && (
-        <ReplySection
-          /*  replies={post.replies}
-          onReply={(message) => onReply(post.id, message)}*/
-          postId={post.id}
-          /*  updateRepliesfromLocal={updateRepliesfromLocal}*/
-        />
-      )}
+      {showReplies && <ReplySection postId={post.id} />}
     </div>
   );
 };

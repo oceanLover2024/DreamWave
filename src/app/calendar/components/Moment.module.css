@@ -1,29 +1,28 @@
 .Moment_wrapper {
-  /* border: 3px solid green;*/
+  /*border: 3px solid green;*/
   width: 50%;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  position: relative;
+  gap: 1rem;
 }
 .Moment_layout {
   padding: 1rem;
-}
-.Moment_title,
-.details,
-.comment {
-  margin-bottom: 1rem;
+  /* border: 1px solid blue;*/
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .comment {
   line-height: 1.5;
 }
-.todayBtn {
-  position: absolute;
-  right: 5%;
-  bottom: 5%;
+.today_btn_parent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* border: 3px red solid;*/
 }
-
 .todayBtnImg {
   width: 100px;
   transition: transform 0.3s ease;
@@ -31,4 +30,12 @@
 }
 .todayBtnImg:hover {
   transform: scale(0.95);
+}
+@media (max-width: 600px) {
+  .Moment_wrapper {
+    width: 95%;
+  }
+  .today_btn_parent {
+    justify-content: center;
+  }
 }

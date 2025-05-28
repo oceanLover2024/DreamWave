@@ -43,3 +43,23 @@
   cursor: pointer;
   color: rgb(59, 58, 58);
 }
+
+.editInput {
+  padding: 0.5rem;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.314);
+}
+.editComment {
+  padding: 0.5rem;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.314);
+  resize: vertical;
+}

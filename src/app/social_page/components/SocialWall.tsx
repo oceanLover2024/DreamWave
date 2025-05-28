@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import SocialCard from "./SocialCard";
-import { CardItem, Reply } from "./type/card";
+import { CardItem } from "./type/card";
 import {
   arrayRemove,
   arrayUnion,
@@ -66,32 +66,6 @@ const SocialWall = ({ postFromDB }: Props) => {
       console.log("更新❤️失敗:", e);
     }
   }
-  /* async function onReply(id: string, message: string) {
-    try {
-      const newReply: Reply = {
-        id: String(Date.now()),
-        authorName: user?.displayName ?? "匿名",
-        authorId: user?.uid ?? "",
-        message: message,
-        createAt: new Date().toISOString(),
-      };
-      const thisPost = posts.find((p) => p.id === id);
-      if (!thisPost) return;
-      const updatedReplies = [...thisPost.replies, newReply];
-      const postRef = doc(db, "posts", id);
-      await updateDoc(postRef, { replies: updatedReplies });
-      setPosts((prev) =>
-        prev.map((p) => (p.id === id ? { ...p, replies: updatedReplies } : p))
-      );
-    } catch (e) {
-      console.log("更新留言失敗:", e);
-    }
-  }
-  const updateRepliesfromLocal = (postId: string, updatedReplies: Reply[]) => {
-    setPosts((prev) =>
-      prev.map((p) => (p.id === postId ? { ...p, replies: updatedReplies } : p))
-    );
-  };*/
   const updateDetailFromLocal = (postId: string, updatedDetail: string) => {
     setPosts((prev) =>
       prev.map((p) => (p.id === postId ? { ...p, detail: updatedDetail } : p))
@@ -102,6 +76,14 @@ const SocialWall = ({ postFromDB }: Props) => {
       prev.map((p) => (p.id === postId ? { ...p, comment: updatedComment } : p))
     );
   };
+  const updateTimeFromLocal = (postId: string, updateAt: string) => {
+    setPosts((prev) =>
+      prev.map((p) => (p.id === postId ? { ...p, updateAt: updateAt } : p))
+    );
+  };
+  const deletePostFromLocal = (postId: string) => {
+    setPosts((prev) => prev.filter((p) => p.id !== postId));
+  };
   return (
     <>
       {posts.map((post) => (
@@ -109,10 +91,10 @@ const SocialWall = ({ postFromDB }: Props) => {
           key={post.id}
           post={post}
           onLike={onLike}
-          /*onReply={onReply}
-          updateRepliesfromLocal={updateRepliesfromLocal}*/
           updateDetailFromLocal={updateDetailFromLocal}
           updateCommentFromLocal={updateCommentFromLocal}
+          updateTimeFromLocal={updateTimeFromLocal}
+          deletePostFromLocal={deletePostFromLocal}
         />
       ))}
     </>

@@ -1,4 +1,7 @@
+"use client";
+import { usePhotographer } from "@/context/PhotographerContext";
 export const Footer = () => {
+  const { photographerName } = usePhotographer();
   return (
     <div>
       <footer
@@ -11,7 +14,7 @@ export const Footer = () => {
           height: "17px",
         }}
       >
-        COPYRIGHT © 2025 Dream Wave 📷 Photo by
+        COPYRIGHT © 2025 Dream Wave 📷 Photo by {photographerName}
       </footer>
     </div>
   );

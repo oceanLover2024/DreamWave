@@ -28,7 +28,7 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
       setUserTitle("");
       setDetail("");
     } else {
-      alert("請輸入類別");
+      alert("Please enter a category");
     }
   }
 
