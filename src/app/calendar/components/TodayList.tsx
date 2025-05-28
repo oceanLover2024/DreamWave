@@ -59,7 +59,7 @@ const TodayList = ({
         <div className={styles.todayTodo_wrapper}>
           <div className={styles.todayTodo_layout}>
             <div className={styles.today_achievements}>
-              Today’s Achievements
+              Today&apos;s Achievements
             </div>
 
             {todayTodo.length > 0 &&

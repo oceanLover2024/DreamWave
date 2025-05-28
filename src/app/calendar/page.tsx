@@ -12,7 +12,7 @@ import { TodoRecord } from "../type/todoItem";
 import TodayList from "./components/TodayList";
 import Moment from "./components/Moment";
 import { usePhotographer } from "@/context/PhotographerContext";
-export default function habitCalendar() {
+export default function HabitCalendar() {
   const { user } = useAuth();
   const [selectedTitle, setSelectedTitle] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<string>("");
@@ -58,7 +58,7 @@ export default function habitCalendar() {
     };
     fetchTodayRecord();
   }, [user, todayStr]);
-  useEffect(() => setPhotographerName("Mo-Eid"), []);
+  useEffect(() => setPhotographerName("Mo-Eid"), [setPhotographerName]);
   const isCompletedDate = useMemo(
     () =>
       new Set(

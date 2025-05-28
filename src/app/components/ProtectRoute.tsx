@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/navigation";
-import { Children, useEffect } from "react";
+import { useEffect } from "react";
 const ProtectRoute = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const { user, isLoading } = useAuth();
@@ -8,7 +8,7 @@ const ProtectRoute = ({ children }: { children: React.ReactNode }) => {
     if (!user && !isLoading) {
       router.push("/");
     }
-  }, [user, isLoading]);
+  }, [user, isLoading, router]);
   if (!user && isLoading) return <div>載入中...</div>;
 
   return <>{children}</>;

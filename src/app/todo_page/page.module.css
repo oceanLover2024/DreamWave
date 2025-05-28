@@ -16,7 +16,7 @@
   min-height: 100vh;
   padding-top: 100px; /*避免上方跟nav重疊*/
   box-sizing: border-box;
-  background-color: rgba(12, 12, 12, 0.145);
+  background-color: rgba(12, 12, 12, 0.116);
 }
 .wrapper {
   max-width: 1200px;

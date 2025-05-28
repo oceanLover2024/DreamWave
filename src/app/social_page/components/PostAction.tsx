@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { CardItem, Reply } from "./type/card";
+import { CardItem } from "./type/card";
 import ReplySection from "./ReplySection";
 import { useAuth } from "../../../context/AuthContext";
 import styles from "./PostAction.module.css";

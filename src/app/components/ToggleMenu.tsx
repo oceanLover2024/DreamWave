@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { usePathname } from "next/navigation";
 
-export default function ToggleMenu<Props>() {
+export default function ToggleMenu() {
   const { user, isLoading, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathName = usePathname();

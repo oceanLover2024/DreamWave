@@ -36,7 +36,10 @@ export default function SocialPage() {
 
     toFetchPostsFromDB();
   }, []);
-  useEffect(() => setPhotographerName("Asad Photo Maldives"), []);
+  useEffect(
+    () => setPhotographerName("Asad Photo Maldives"),
+    [setPhotographerName]
+  );
 
   return (
     <ProtectRoute>

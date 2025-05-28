@@ -14,7 +14,7 @@ export default function Member() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const { setPhotographerName } = usePhotographer();
-  useEffect(() => setPhotographerName("Gui Basto"), []);
+  useEffect(() => setPhotographerName("Gui Basto"), [setPhotographerName]);
   useEffect(() => {
     if (!user) return;
     const fetchUserData = async () => {
@@ -49,7 +49,7 @@ export default function Member() {
       <section className={styles.section}>
         <div className={styles.wrapper}>
           {pic ? (
-            <img src={pic} className={styles.img} />
+            <img src={pic} className={styles.img} alt="default picture" />
           ) : (
             <ImUser className={styles.defaultPic} />
           )}

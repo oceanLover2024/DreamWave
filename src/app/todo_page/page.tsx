@@ -44,7 +44,7 @@ const DayHabit = () => {
     };
     saveDraft();
   }, [todos, user]);
-  useEffect(() => setPhotographerName("Siao"), []);
+  useEffect(() => setPhotographerName("Siao"), [setPhotographerName]);
 
   function handleDelete(id: string) {
     setTodo((prev) => prev.filter((item) => item.id !== id));
