@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { TodoRecord } from "../../type/todoItem";
 import styles from "./TodayList.module.css";
 import { BsTrash } from "react-icons/bs";
@@ -126,7 +126,7 @@ const TodayList = ({
               ))}
             {todayTodo.length === 0 && (
               <div className={styles.incomplete_text}>
-                Nothing completed yet, but you're on your way!
+                Nothing completed yet, but you&apos;re on your way!
               </div>
             )}
           </div>
