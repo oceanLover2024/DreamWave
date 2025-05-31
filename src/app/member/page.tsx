@@ -42,7 +42,7 @@ export default function Member() {
   const toggleToEdit = () => {
     setIsEditing(!isEditing);
   };
-  if (isLoading) return <div>載入中.....</div>;
+  if (user && isLoading) return <div>載入中.....</div>;
   return (
     <ProtectRoute>
       <div className={styles.background} />
