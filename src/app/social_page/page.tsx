@@ -71,33 +71,31 @@ export default function SocialPage() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    user && (
-      <ProtectRoute>
-        <div className={styles.background} />
-        <section className={styles.section}>
-          <div className={styles.mode_wrapper}>
-            <button
-              className={`${styles.mode} ${styles.home}  ${
-                viewMode === "home" ? styles.mode_active : ""
-              }`}
-              onClick={() => handleMode("home")}
-            >
-              <FaHome />
-            </button>
-            <button
-              className={`${styles.mode} ${styles.mine} ${
-                viewMode === "mine" ? styles.mode_active : ""
-              }`}
-              onClick={() => handleMode("mine")}
-            >
-              <Pic userId={user.uid} size={picSize} />
-            </button>
-          </div>
-          <div className={styles.wrapper}>
-            <SocialWall postFromDB={fetchedPosts} />
-          </div>
-        </section>
-      </ProtectRoute>
-    )
+    <ProtectRoute>
+      <div className={styles.background} />
+      <section className={styles.section}>
+        <div className={styles.mode_wrapper}>
+          <button
+            className={`${styles.mode} ${styles.home}  ${
+              viewMode === "home" ? styles.mode_active : ""
+            }`}
+            onClick={() => handleMode("home")}
+          >
+            <FaHome />
+          </button>
+          <button
+            className={`${styles.mode} ${styles.mine} ${
+              viewMode === "mine" ? styles.mode_active : ""
+            }`}
+            onClick={() => handleMode("mine")}
+          >
+            {user && <Pic userId={user.uid} size={picSize} />}
+          </button>
+        </div>
+        <div className={styles.wrapper}>
+          <SocialWall postFromDB={fetchedPosts} />
+        </div>
+      </section>
+    </ProtectRoute>
   );
 }
