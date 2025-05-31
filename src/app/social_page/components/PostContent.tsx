@@ -8,7 +8,7 @@ import { PiPencilCircleLight } from "react-icons/pi";
 import { TfiSaveAlt } from "react-icons/tfi";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import Pic from "./common/Pic";
+import Pic from "../../components/common/Pic";
 type PostContentProps = {
   post: CardItem;
   updateDetailFromLocal: (postId: string, updatedDetail: string) => void;

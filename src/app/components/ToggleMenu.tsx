@@ -42,6 +42,9 @@ export default function ToggleMenu() {
           <Link href="/social_page" className={styles.menu_text}>
             Wall
           </Link>
+          <Link href="/friends" className={styles.menu_text}>
+            Friends
+          </Link>
           <Link href="/member" className={styles.menu_text}>
             Member
           </Link>

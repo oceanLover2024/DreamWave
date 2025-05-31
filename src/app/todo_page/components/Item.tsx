@@ -6,7 +6,7 @@ import { PiPencilCircleLight } from "react-icons/pi";
 import { FaUserFriends } from "react-icons/fa";
 import { TfiSaveAlt } from "react-icons/tfi";
 import { TodoItem } from "../../type/todoItem";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 type ItemProps = TodoItem & {
   handleDelete: () => void;
@@ -36,10 +36,12 @@ const Item: React.FC<ItemProps> = ({
     if (!user) return;
     if (isShared && !isShareNow) {
       try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userData = userDoc.exists() ? userDoc.data() : null;
         const postRef = doc(collection(db, "posts"));
         const postData = {
           id: postRef.id,
-          name: user.displayName || "匿名",
+          name: userData?.displayName || userData?.username || "匿名",
           authorId: user.uid,
           title,
           detail,

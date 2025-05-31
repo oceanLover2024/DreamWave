@@ -30,7 +30,7 @@ const List: React.FC<ListProps> = ({
   return (
     <>
       <div className={styles.outer}>
-        <h2 className={styles.h2}>Habit Tracker</h2>
+        <h2 className={styles.h2}>Todo List</h2>
         <AnimatePresence>
           {todos.map((item: TodoItem) => {
             const {

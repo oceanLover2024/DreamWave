@@ -3,7 +3,7 @@ import styles from "./SaveBtn.module.css";
 import { TodoItem } from "../../type/todoItem";
 import { useAuth } from "../../../context/AuthContext";
 import { db } from "../../../lib/firebase";
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { format } from "date-fns";
 type SaveBtnProps = {
   onClear: () => void;
@@ -20,7 +20,8 @@ const SaveBtn = ({ onClear, todos }: SaveBtnProps) => {
         todos: todos,
         date: today,
       });
-
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userData = userDoc.exists() ? userDoc.data() : null;
       //shared social wall
       const shareToWallTodos = todos.filter(
         (item) => item.isShared && !item.isShareNow
@@ -29,7 +30,7 @@ const SaveBtn = ({ onClear, todos }: SaveBtnProps) => {
         const postRef = doc(collection(db, "posts"));
         const postData = {
           id: postRef.id,
-          name: user.displayName || "匿名",
+          name: userData?.displayName || userData?.username || "匿名",
           authorId: user.uid,
           title: item.title,
           detail: item.detail,
@@ -40,11 +41,12 @@ const SaveBtn = ({ onClear, todos }: SaveBtnProps) => {
         };
 
         await setDoc(postRef, postData);
+        console.log(postData.name, userDoc.data());
       }
       alert("Successfully submitted!");
 
       await deleteDoc(doc(db, "users", user.uid, "drafts", today));
-      localStorage.removeItem("local_todos");
+      localStorage.removeItem(`local_todos_${user.uid}`);
       onClear();
     } catch (e) {
       if (e instanceof Error) console.log("儲存失敗", e.message);

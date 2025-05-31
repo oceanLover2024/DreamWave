@@ -1,16 +1,21 @@
 "use client";
-import styles from "./signin.module.css";
+import styles from "../sign.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../lib/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FirebaseError } from "firebase/app";
-
+import { usePhotographer } from "@/context/PhotographerContext";
 export default function SignIn() {
+  const { setPhotographerName } = usePhotographer();
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState("");
+  useEffect(
+    () => setPhotographerName("Kammeran Gonzalez-Keola"),
+    [setPhotographerName]
+  );
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setError("");
@@ -43,7 +48,7 @@ export default function SignIn() {
   };
   return (
     <main className={styles.main_layout}>
-      <div className={styles.sign_in_box_layout}>
+      <div className={styles.box_layout}>
         <div className={styles.welcome_text}>Welcome</div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div>Email</div>
@@ -58,13 +63,14 @@ export default function SignIn() {
             className={styles.input}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className={styles.btn_signin} type="submit">
+          <button className={styles.btn_sign} type="submit">
             SIGN IN
           </button>
 
           {error && <div className={styles.errorText}>{error}</div>}
           <button
-            className={styles.btn_to_signup}
+            type="button"
+            className={styles.btn_change}
             onClick={() => router.push("/auth/sign_up")}
           >
             Create a new account

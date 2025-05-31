@@ -1,34 +1,58 @@
 "use client";
-import styles from "./signup.module.css";
+import styles from "../sign.module.css";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../lib/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FirebaseError } from "firebase/app";
-import { saveUserDataToDB } from "@/lib/userService";
+import { checkUsernameExist, saveUserDataToDB } from "@/lib/userService";
+import { usePhotographer } from "@/context/PhotographerContext";
 export default function Signup() {
+  const { setPhotographerName } = usePhotographer();
   const router = useRouter();
   const [username, setUsername] = useState<string>("");
   const [usernameError, setUsernameError] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState("");
+  useEffect(
+    () => setPhotographerName("Kammeran Gonzalez-Keola"),
+    [setPhotographerName]
+  );
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setError("");
     setUsernameError("");
-    if (!username) setUsernameError("Please enter a display name");
+    if (!username) {
+      setUsernameError("Please enter a username");
+      return;
+    }
+    if (!email) {
+      setError("Please enter an email address.");
+      return;
+    }
+
+    const usernameExist = await checkUsernameExist(username);
+
+    if (usernameExist) {
+      setUsernameError("This username is already taken.");
+      return;
+    }
+
     try {
       const userData = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      setUsername(username);
+
       await updateProfile(userData.user, { displayName: username });
-      await saveUserDataToDB(userData.user.uid, username, email);
+
+      await auth.currentUser?.getIdToken(true);
+
+      await saveUserDataToDB(userData.user.uid, username);
       alert("Sign-up successful!");
-      router.push("../auth/sign_in");
+      router.push("/auth/sign_in");
     } catch (e) {
       if (e instanceof FirebaseError) {
         switch (e.code) {
@@ -45,11 +69,11 @@ export default function Signup() {
             setError("This email is already registered.");
             break;
           default:
-            setError("Login failed:" + e.message);
+            setError("Signup failed:" + e.message);
         }
       } else if (e instanceof Error) {
         console.log("程式錯誤:", e.message);
-        setError("Login failed, Please try again.");
+        setError("Signup failed, Please try again.");
       } else {
         console.log("未知錯誤:");
         setError("An error occurred. Please try again.");
@@ -58,10 +82,10 @@ export default function Signup() {
   };
   return (
     <main className={styles.main_layout}>
-      <div className={styles.sign_up_box_layout}>
+      <div className={styles.box_layout}>
         <div className={styles.welcome_text}>Welcome</div>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div>username</div>
+          <div>Username</div>
           <input
             className={styles.input}
             onChange={(e) => setUsername(e.target.value.trim())}
@@ -78,7 +102,7 @@ export default function Signup() {
             className={styles.input}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className={styles.btn_signup} type="submit">
+          <button className={styles.btn_sign} type="submit">
             SIGN Up
           </button>
           {usernameError && (
@@ -86,7 +110,7 @@ export default function Signup() {
           )}
           {error && <div className={styles.errorText}>{error}</div>}
           <button
-            className={styles.btn_to_signin}
+            className={styles.btn_change}
             type="button"
             onClick={() => router.push("/auth/sign_in")}
           >

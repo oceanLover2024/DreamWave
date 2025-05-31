@@ -8,6 +8,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   increment,
   onSnapshot,
   orderBy,
@@ -19,7 +20,7 @@ import { BsTrash } from "react-icons/bs";
 import { PiPencilCircleLight } from "react-icons/pi";
 import { TfiSaveAlt } from "react-icons/tfi";
 import { getFinalTime } from "./tools/postTime";
-import Pic from "./common/Pic";
+import Pic from "../../components/common/Pic";
 type ReplySectionProps = {
   postId: string;
 };
@@ -50,9 +51,11 @@ const ReplySection = ({ postId }: ReplySectionProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || message.trim() === "") return;
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    const userData = userDoc.exists() ? userDoc.data() : null;
     await addDoc(collection(db, "posts", postId, "replies"), {
       authorId: user.uid,
-      authorName: user.displayName ?? "匿名",
+      authorName: userData?.displayName || userData?.username || "匿名",
       message: message.trim(),
       createAt: new Date().toISOString(),
       updateAt: new Date().toISOString(),

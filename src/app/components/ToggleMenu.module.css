@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 50px;
-  background-color: rgba(246, 244, 244, 0.217);
+  height: 56px;
+  background-color: rgba(247, 244, 244, 0.27);
   color: white;
   font-size: 20px;
   cursor: pointer;
@@ -35,7 +35,7 @@
   top: 0;
   right: 10px;
   width: 250px;
-  height: 200px;
+  height: 250px;
   background-color: rgba(233, 230, 230, 0.671);
   border-radius: 8%;
   z-index: 1;

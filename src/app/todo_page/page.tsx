@@ -19,7 +19,7 @@ const DayHabit = () => {
   useEffect(() => {
     const loadTodos = async () => {
       if (!user) return;
-      const localData = localStorage.getItem("local_todos");
+      const localData = localStorage.getItem(`local_todos_${user.uid}`);
       const draftRef = doc(db, "users", user.uid, "drafts", today);
       const draftSnap = await getDoc(draftRef);
       if (draftSnap.exists()) {
@@ -27,7 +27,7 @@ const DayHabit = () => {
         const todos = data?.todo || [];
         setTodo(todos || []);
       }
-      localStorage.setItem("local_todos", JSON.stringify(todos));
+      localStorage.setItem(`local_todos_${user.uid}`, JSON.stringify(todos));
       if (localData) {
         setTodo(JSON.parse(localData));
         return;
@@ -37,13 +37,18 @@ const DayHabit = () => {
   }, [user]);
   useEffect(() => {
     if (!user || todos.length === 0) return;
-    localStorage.setItem("local_todos", JSON.stringify(todos));
+    localStorage.setItem(`local_todos_${user.uid}`, JSON.stringify(todos));
     const saveDraft = async () => {
       const draftRef = doc(db, "users", user.uid, "drafts", today);
       await setDoc(draftRef, { todos: todos, date: today });
     };
     saveDraft();
   }, [todos, user]);
+  useEffect(() => {
+    if (!user) {
+      setTodo([]);
+    }
+  }, [user]);
   useEffect(() => setPhotographerName("Siao"), [setPhotographerName]);
 
   function handleDelete(id: string) {

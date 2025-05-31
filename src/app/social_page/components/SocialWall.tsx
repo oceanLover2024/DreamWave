@@ -11,13 +11,19 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import { useAuth } from "../../../context/AuthContext";
+import styles from "./SocialCard.module.css";
 type Props = { postFromDB: CardItem[] };
 const SocialWall = ({ postFromDB }: Props) => {
   const { user } = useAuth();
   const [posts, setPosts] = useState<CardItem[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
+    setIsLoading(true);
     if (postFromDB.length > 0) {
       setPosts(postFromDB);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
     }
   }, [postFromDB]);
 
@@ -84,19 +90,29 @@ const SocialWall = ({ postFromDB }: Props) => {
   const deletePostFromLocal = (postId: string) => {
     setPosts((prev) => prev.filter((p) => p.id !== postId));
   };
+  if (isLoading)
+    return <div className={styles.socialWallNoPostText}>Loading...</div>;
   return (
     <>
-      {posts.map((post) => (
-        <SocialCard
-          key={post.id}
-          post={post}
-          onLike={onLike}
-          updateDetailFromLocal={updateDetailFromLocal}
-          updateCommentFromLocal={updateCommentFromLocal}
-          updateTimeFromLocal={updateTimeFromLocal}
-          deletePostFromLocal={deletePostFromLocal}
-        />
-      ))}
+      {posts.length !== 0 ? (
+        posts.map((post) => (
+          <SocialCard
+            key={post.id}
+            post={post}
+            onLike={onLike}
+            updateDetailFromLocal={updateDetailFromLocal}
+            updateCommentFromLocal={updateCommentFromLocal}
+            updateTimeFromLocal={updateTimeFromLocal}
+            deletePostFromLocal={deletePostFromLocal}
+          />
+        ))
+      ) : (
+        <div className={styles.socialWallNoPostText}>
+          No posts yet.
+          <br />
+          Share your first post or connect with a friend!
+        </div>
+      )}
     </>
   );
 };

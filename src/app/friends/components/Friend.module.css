@@ -1,0 +1,65 @@
+.layout {
+  background-color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* margin-bottom: 10px;*/
+  margin-top: 10px;
+}
+.no_friend_text {
+  color: rgb(87, 85, 85);
+  text-align: center;
+}
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.name {
+  flex: 1;
+  font-size: 14px;
+}
+.action {
+  /*border: 1px blue solid;*/
+  display: flex;
+  gap: 10px;
+}
+.action button {
+  width: 120px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+.confirm {
+  background-color: rgb(87, 158, 184);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.confirm:hover {
+  background-color: rgb(68, 124, 144);
+}
+
+.delete {
+  background-color: rgb(142, 140, 140);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.delete:hover {
+  background-color: rgb(112, 110, 110);
+}
+
+@media (max-width: 600px) {
+}
