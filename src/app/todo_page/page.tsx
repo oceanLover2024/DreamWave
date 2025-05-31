@@ -24,7 +24,7 @@ const DayHabit = () => {
       const draftSnap = await getDoc(draftRef);
       if (draftSnap.exists()) {
         const data = draftSnap.data();
-        const todos = data?.todo || [];
+        const todos = data?.todos || [];
         setTodo(todos || []);
       }
       localStorage.setItem(`local_todos_${user.uid}`, JSON.stringify(todos));
@@ -34,7 +34,7 @@ const DayHabit = () => {
       }
     };
     loadTodos();
-  }, [user]);
+  }, [user, today]);
   useEffect(() => {
     if (!user || todos.length === 0) return;
     localStorage.setItem(`local_todos_${user.uid}`, JSON.stringify(todos));
@@ -43,7 +43,7 @@ const DayHabit = () => {
       await setDoc(draftRef, { todos: todos, date: today });
     };
     saveDraft();
-  }, [todos, user]);
+  }, [todos, user, today]);
   useEffect(() => {
     if (!user) {
       setTodo([]);
