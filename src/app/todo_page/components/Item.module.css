@@ -85,7 +85,8 @@
   box-sizing: border-box;
 }
 .comment_text:focus {
-  outline-color: #5197ba;
+  box-shadow: 0px 0px 2px 2px #37b5f4bc;
+  outline: none;
 }
 .comment {
   width: 80%;

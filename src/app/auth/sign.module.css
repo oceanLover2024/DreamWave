@@ -14,6 +14,7 @@
   border-radius: 5%;
   background-color: rgba(255, 255, 255, 0.65);
   padding: 2rem;
+  box-sizing: border-box;
 }
 .form {
   display: flex;
@@ -63,4 +64,9 @@
 .errorText {
   align-self: center;
   color: rgb(195, 4, 4);
+}
+@media (max-width: 600px) {
+  .box_layout {
+    width: 80%;
+  }
 }

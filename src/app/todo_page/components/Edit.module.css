@@ -17,27 +17,26 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
-.select_wrapper {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.select_wrapper select,
+
+.select,
 .input_detail,
 .other_category {
   font-family: "Courier New", Courier, monospace;
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #5dadd5;
+  border: none;
   border-radius: 6px;
+  outline: none;
+  background-color: white;
+  color: black;
 }
-.select_wrapper select:focus,
+
+.select:focus,
 .input_detail:focus,
 .other_category:focus {
-  outline-color: #5197ba;
-  /* box-shadow: 3px 3px 5px rgb(61, 213, 239);*/
+  box-shadow: 0px 0px 2px 2px #37b5f4bc;
 }
-.select_wrapper select {
+.select select {
   cursor: pointer;
 }
 .input_detail {
@@ -50,17 +49,30 @@
   font-size: 24px;
   font-weight: bold;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #5197ba;
   border: none;
   width: 30px;
   height: 30px;
   flex-shrink: 0;
   cursor: pointer;
-  background-color: rgb(240, 248, 255);
+  background-color: white;
   transition: background-color 0.2s;
 }
 .create_btn:hover {
   background-color: #325f75;
   color: white;
   transform: scale(0.9);
+}
+@media (max-width: 600px) {
+  .form_layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input_detail,
+  .other_category {
+    width: 90%;
+  }
 }

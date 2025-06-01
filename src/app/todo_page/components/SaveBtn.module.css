@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 84px;
-  height: 40px;
+  width: 90px;
+  height: 50px;
   background-color: rgba(246, 244, 244, 0.631);
   font-size: 20px;
   cursor: pointer;
@@ -11,6 +11,7 @@
   transition: transform 0.2s ease;
   justify-self: center;
   margin: 20px;
+  color: black;
 }
 .save_all_btn:hover {
   transform: scale(0.95);

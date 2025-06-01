@@ -75,22 +75,22 @@ export default function SocialPage() {
       <div className={styles.background} />
       <section className={styles.section}>
         <div className={styles.mode_wrapper}>
-          <button
+          <div
             className={`${styles.mode} ${styles.home}  ${
               viewMode === "home" ? styles.mode_active : ""
             }`}
             onClick={() => handleMode("home")}
           >
             <FaHome />
-          </button>
-          <button
+          </div>
+          <div
             className={`${styles.mode} ${styles.mine} ${
               viewMode === "mine" ? styles.mode_active : ""
             }`}
             onClick={() => handleMode("mine")}
           >
             {user && <Pic userId={user.uid} size={picSize} />}
-          </button>
+          </div>
         </div>
         <div className={styles.wrapper}>
           <SocialWall postFromDB={fetchedPosts} />

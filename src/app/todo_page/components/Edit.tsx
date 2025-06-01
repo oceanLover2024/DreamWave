@@ -9,7 +9,7 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
   const [userTitle, setUserTitle] = useState<string>("");
   const [detail, setDetail] = useState<string>("");
   function handleCreate() {
-    const finalTitle = title === "🔸其他" ? `🔸${userTitle}` : title;
+    const finalTitle = title === "🔸Others" ? `🔸${userTitle}` : title;
     if (finalTitle) {
       setTodo((pre: TodoItem[]) => [
         ...pre,
@@ -37,26 +37,25 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
       <div className={styles.outer}>
         <div className={styles.create_here}>Create Here</div>
         <div className={styles.form_layout}>
-          <div className={styles.select_wrapper}>
-            <select
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              value={title}
-              required
-            >
-              <option value=""> Category</option>
-              <option value="📓Reading">📓Reading</option>
-              <option value="👩‍💻Programming">👩‍💻Programming</option>
-              <option value="🏃‍♂️‍➡️Running">🏃‍♂️‍➡️Running</option>
-              <option value="🏄🏻‍♀️Surfing">🏄🏻‍♀️Surfing</option>
-              <option value="🏊🏼Swimming">🏊🏼Swimming</option>
-              <option value="🏋🏻‍♂️Work out">🏋🏻‍♂️Work out</option>
-              <option value="🚴🏻‍♂️Cycling">🚴🏻‍♂️Cycling</option>
-              <option value="🧘🏻‍♀️Yoga">🧘🏻‍♀️yoga</option>
-              <option value="🔸Others">🔸Others</option>
-            </select>
-          </div>
+          <select
+            className={styles.select}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+            value={title}
+            required
+          >
+            <option value=""> Category</option>
+            <option value="📓Reading">📓Reading</option>
+            <option value="👩‍💻Programming">👩‍💻Programming</option>
+            <option value="🏃‍♂️‍➡️Running">🏃‍♂️‍➡️Running</option>
+            <option value="🏄🏻‍♀️Surfing">🏄🏻‍♀️Surfing</option>
+            <option value="🏊🏼Swimming">🏊🏼Swimming</option>
+            <option value="🏋🏻‍♂️Work out">🏋🏻‍♂️Work out</option>
+            <option value="🚴🏻‍♂️Cycling">🚴🏻‍♂️Cycling</option>
+            <option value="🧘🏻‍♀️Yoga">🧘🏻‍♀️yoga</option>
+            <option value="🔸Others">🔸Others</option>
+          </select>
 
           {title === "🔸Others" && (
             <input
