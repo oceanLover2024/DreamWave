@@ -19,7 +19,7 @@ const DayHabit = () => {
   useEffect(() => {
     const loadTodos = async () => {
       if (!user) return;
-      const localData = localStorage.getItem(`local_todos_${user.uid}`);
+
       const draftRef = doc(db, "users", user.uid, "drafts", today);
       const draftSnap = await getDoc(draftRef);
       if (draftSnap.exists()) {
@@ -28,11 +28,14 @@ const DayHabit = () => {
         setTodo(todos || []);
       }
       localStorage.setItem(`local_todos_${user.uid}`, JSON.stringify(todos));
+    }; /* const localData = localStorage.getItem(`local_todos_${user.uid}`);
       if (localData) {
-        setTodo(JSON.parse(localData));
-        return;
-      }
-    };
+        const parsedData = JSON.parse(localData);
+        if (parsedData.length > 0) {
+          setTodo(parsedData);
+          return;
+        }
+      }*/
     loadTodos();
   }, [user, today]);
   useEffect(() => {
@@ -52,8 +55,20 @@ const DayHabit = () => {
   useEffect(() => setPhotographerName("Siao"), [setPhotographerName]);
 
   function handleDelete(id: string) {
-    setTodo((prev) => prev.filter((item) => item.id !== id));
+    if (!user) return;
+    const updatedTodo = todos.filter((item) => item.id !== id);
+    setTodo(updatedTodo);
+    localStorage.setItem(
+      `local_todos_${user.uid}`,
+      JSON.stringify(updatedTodo)
+    );
+    setDoc(doc(db, "users", user.uid, "drafts", today), {
+      todos: updatedTodo,
+      date: today,
+    });
+    return updatedTodo;
   }
+
   function handleIsCompleted(id: string) {
     setTodo((prev) =>
       prev.map((item) =>
