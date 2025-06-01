@@ -78,9 +78,9 @@ const Edit: React.FC<EditProps> = ({ setTodo }) => {
             }}
           />
 
-          <button onClick={handleCreate} className={styles.create_btn}>
+          <div onClick={handleCreate} className={styles.create_btn}>
             +
-          </button>
+          </div>
         </div>
       </div>
     </>
